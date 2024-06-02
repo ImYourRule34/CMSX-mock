@@ -12,6 +12,7 @@
   "dependencies": {
     "bcrypt": "^5.1.1",
     "body-parser": "^1.20.2",
+    "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "jsonwebtoken": "^9.0.2",
     "pg": "^8.11.5"
@@ -19,6 +20,6 @@
   "description": "",
   "devDependencies": {
     "jest": "^29.7.0",
-    "supertest": "^7.0.0"  
+    "supertest": "^7.0.0"
   }
 }
