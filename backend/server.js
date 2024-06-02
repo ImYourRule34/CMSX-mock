@@ -19,7 +19,11 @@ app.use('/api', usersRouter);
 app.use('/api', rolesRouter);
 app.use('/api', classesRouter);
 
-// Start the server
-app.listen(port, () => {
-  console.log(`Server running on http://localhost:${port}`);
-});
+if (process.env.NODE_ENV !== 'test') {
+  // Start the server only if not in test environment
+  app.listen(port, () => {
+    console.log(`Server running on http://localhost:${port}`);
+  });
+}
+
+module.exports = app;  // Export the app for testing
