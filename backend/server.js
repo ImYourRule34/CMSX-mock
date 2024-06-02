@@ -1,5 +1,7 @@
 require('dotenv').config();
 const express = require('express');
+const swaggerUi = require('swagger-ui-express');
+const swaggerSpec = require('./swaggerConfig');
 const bodyParser = require('body-parser');
 const usersRouter = require('./routes/users');
 const rolesRouter = require('./routes/roles');
@@ -25,6 +27,7 @@ app.use('/api', classesRouter);
 app.use('/api', assignmentsRouter);
 app.use('/api', enrollmentsRouter);
 app.use('/api', gradesRouter);
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 if (process.env.NODE_ENV !== 'test') {
   // Start the server only if not in test environment
