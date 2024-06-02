@@ -6,7 +6,7 @@ const rolesRouter = require('./routes/roles');
 const classesRouter = require('./routes/classes');
 const assignmentsRouter = require('./routes/assignments');
 const enrollmentsRouter = require('./routes/enrollments');
-const gradesRouter = require('./routes/grades')
+const gradesRouter = require('./routes/grades');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -33,4 +33,4 @@ if (process.env.NODE_ENV !== 'test') {
   });
 }
 
-module.exports = app;  // Export the app for testing
+module.exports = app; // Export the app for testing

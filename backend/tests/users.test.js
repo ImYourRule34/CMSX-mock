@@ -1,10 +1,12 @@
 const request = require('supertest');
-const app = require('../server');  // Import the app from server.js
+const app = require('../server'); // Import the app from server.js
 const pool = require('../db');
 
 beforeAll(async () => {
   // Insert initial test data
-  await pool.query(`INSERT INTO Roles (role_id, role_name) VALUES (1, 'admin'), (2, 'student'), (3, 'professor')`);
+  await pool.query(
+    `INSERT INTO Roles (role_id, role_name) VALUES (1, 'admin'), (2, 'student'), (3, 'professor')`,
+  );
 });
 
 afterAll(async () => {
@@ -23,36 +25,30 @@ describe('CMSX API', () => {
   });
 
   it('should register a new user', async () => {
-    const res = await request(app)
-      .post('/api/register')
-      .send({
-        username: 'testuser',
-        password: 'password123',
-        email: 'testuser@example.com',
-        role_id: 1
-      });
+    const res = await request(app).post('/api/register').send({
+      username: 'testuser',
+      password: 'password123',
+      email: 'testuser@example.com',
+      role_id: 1,
+    });
     expect(res.statusCode).toEqual(200);
     expect(res.body).toHaveProperty('username', 'testuser');
   });
 
   it('should login a user', async () => {
-    const res = await request(app)
-      .post('/api/login')
-      .send({
-        username: 'testuser',
-        password: 'password123'
-      });
+    const res = await request(app).post('/api/login').send({
+      username: 'testuser',
+      password: 'password123',
+    });
     expect(res.statusCode).toEqual(200);
     expect(res.body).toHaveProperty('token');
   });
 
   it('should get all users with valid token', async () => {
-    const loginRes = await request(app)
-      .post('/api/login')
-      .send({
-        username: 'testuser',
-        password: 'password123'
-      });
+    const loginRes = await request(app).post('/api/login').send({
+      username: 'testuser',
+      password: 'password123',
+    });
     const token = loginRes.body.token;
     const res = await request(app)
       .get('/api/users')
