@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const usersRouter = require('./routes/users');
 const rolesRouter = require('./routes/roles');
 const classesRouter = require('./routes/classes');
+const assignmentsRouter = require('./routes/assignments');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -19,6 +20,7 @@ app.get('/', (req, res) => {
 app.use('/api', usersRouter);
 app.use('/api', rolesRouter);
 app.use('/api', classesRouter);
+app.use('/api', assignmentsRouter);
 
 if (process.env.NODE_ENV !== 'test') {
   // Start the server only if not in test environment

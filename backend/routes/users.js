@@ -4,7 +4,7 @@ const pool = require('../db');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
-const SECRET_KEY = 'your_secret_key';  // Ensure this is the same as used in the tests
+const SECRET_KEY = '1234';  // Ensure this is the same as used in the tests
 
 // Register a new user
 router.post('/register', async (req, res) => {
