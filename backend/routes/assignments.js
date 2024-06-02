@@ -5,7 +5,7 @@ const authenticateToken = require('../middleware/auth');
 
 // Get all assignments
 router.get('/assignments', authenticateToken, async (req, res) => {
-    console.log('GET /assignments called');
+    // console.log('GET /assignments called');
     try {
         const result = await pool.query('SELECT * FROM Assignments');
         res.json(result.rows);
@@ -17,7 +17,7 @@ router.get('/assignments', authenticateToken, async (req, res) => {
 
 // Create a new assignment
 router.post('/assignments', authenticateToken, async (req, res) => {
-    console.log('POST /assignments called with body:', req.body);
+    // console.log('POST /assignments called with body:', req.body);
     const { class_id, title, description, due_date } = req.body;
     try {
         const result = await pool.query(

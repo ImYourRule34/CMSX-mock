@@ -5,6 +5,8 @@ const usersRouter = require('./routes/users');
 const rolesRouter = require('./routes/roles');
 const classesRouter = require('./routes/classes');
 const assignmentsRouter = require('./routes/assignments');
+const enrollmentsRouter = require('./routes/enrollments');
+const gradesRouter = require('./routes/grades')
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -21,6 +23,8 @@ app.use('/api', usersRouter);
 app.use('/api', rolesRouter);
 app.use('/api', classesRouter);
 app.use('/api', assignmentsRouter);
+app.use('/api', enrollmentsRouter);
+app.use('/api', gradesRouter);
 
 if (process.env.NODE_ENV !== 'test') {
   // Start the server only if not in test environment
